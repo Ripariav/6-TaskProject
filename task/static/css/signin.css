@@ -1,0 +1,29 @@
+.container{
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+}
+
+.loginForm{
+    display: flex;
+    flex-flow: column wrap;
+    max-width: 400px;
+    margin: 10px 0 0 0;
+    align-items: center;
+    justify-content: center;
+}
+
+.loginForm>input{
+    margin: 5px 0 0 0;
+}
+
+.loginForm>label{
+    margin: 5px 0 0 0;
+}
+
+.loginForm>button{
+    max-width: 100px;
+    align-items: center;
+    justify-content: center;
+    margin: 20px 0 0 0;
+}

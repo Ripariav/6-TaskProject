@@ -1,0 +1,36 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../static/css/base.css">
+    <link rel="icon" type="image/png" href="{% static '../static/img/webico.png' %}">
+    <script src="https://kit.fontawesome.com/e189de5dec.js" crossorigin="anonymous"></script>
+    {% block css %}
+    {% endblock %}
+    <title>TaskProject - {{name_site}} </title>
+</head>
+<body>
+    <!-- Barra de navegación -->
+    <div class="navbar">
+        <a href="/"><img src="{% static '../static/img/webico.png' %}" alt="logo-task" class="navbar-logo"></a>
+        {% if user.is_authenticated %}
+        <a href="/task">Tasks</a>
+        <a href="/logout">Logout</a>
+        {% if user.subadmin %}
+        <a href="#">HAMBURGUESO</a>
+        {% endif %}
+        {% else %}
+        <a href="/signup">Signup</a>
+        <a href="/signin">Login</a>
+        {% endif %}
+    </div>
+    
+    <div class="container">
+    {% block content %}
+
+    {% endblock %}
+    </div>
+</body>
+</html>

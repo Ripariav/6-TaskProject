@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" href="../static/css/singup.css">
+{% endblock %}
+
+{% block content %}
+<h1>SIGN UP</h1>
+
+<h2 class="error_message">{{error}}</h2>
+
+<form action="/signup/" method="POST">
+    {% csrf_token %}
+    {{form.as_p}}
+
+    <button>
+        SingUp
+    </button>
+</form>
+
+
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" href="../../static/css/taskcreate.css">
+{% endblock %}
+
+{% block content %}
+    <h2>Create Task: </h2>
+    <form action="/task/create/" method="post" class="taskcreateform">
+        {% csrf_token %}
+        {{form}}
+        <button class="create-task-btn">
+            Create Task
+        </button>
+    </form>
+
+{% endblock %}

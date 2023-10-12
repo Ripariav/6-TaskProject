@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" href="../../static/css/task_details.css">
+{% endblock %}
+
+{% block content %}
+
+
+<div class="task-details">
+    <h1 class="task-title">Tasks - Detail</h1>
+    <strong>{{task.title}}</strong>
+    <p>{{task.description}}</p>
+    {% if task.important == True %}
+    <p>Importance: HIGH</p>
+    {% else %}
+    <p>Importance: Normal</p>
+    {% endif %}
+
+    {% if task.finishdate != NULL %}
+    <p>{{task.important}}</p>
+    {% else %}
+    <p>It isn't done.</p>
+    {% endif %}
+</div>
+
+<div class="task_change">
+    <h1 class="task-title">Update:</h1>
+    {{error}}
+    <form action="" method="post" class="task-details-update">
+        {% csrf_token %}
+        {{form}}
+        <button class="button">update</button>
+    </form>
+
+    {% if task.finishdate == NULL %}
+    <form action="{% url 'task_completed' task.id %}" method="post" class="complete_task">
+        {% csrf_token %}
+        <button class="button">
+            Complete
+        </button>
+    </form>
+    {% else %}
+    <form action="{% url 'undo_complete_task' task.id %}" method="post" class="complete_task">
+        {% csrf_token %}
+        <button class="button">
+            UnComplete
+        </button>
+    </form>
+    {% endif %}
+
+    <form action="{% url 'delete_task' task.id %}" method="post" class="complete_task">
+        {% csrf_token %}
+        <button class="button">
+            Delete
+        </button>
+    </form>
+</div>
+
+<div class="task-edit-details">
+
+</div>
+
+<a href='/task'><button class="button">Go back</button></a>
+
+
+{% endblock %}

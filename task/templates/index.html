@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" href="../static/css/index.css">
+{% endblock %}
+
+
+{% block content %}
+
+<div class="hero">
+    <img src="{% static '../static/img/logo.png' %}" alt="Logo principal para el home">
+</div>
+
+<div class="about">
+    <div class="about-content">
+        {% if request.user.is_authenticated %}
+    <h2>Hello, {{ request.user.username }}.</h2>
+    {% else %}
+    <h2>Welcome - User, </br>Please Login or Singup.</h2>
+    {% endif %}
+    <p class="text-about">
+        I am pleased to introduce a website I developed using Django and Postgres SQL, bearing the name Riparia. This project embodies my dedication to creating a seamless and efficient digital experience. With Django's robust framework and Postgres SQL's powerful database management capabilities, Riparia offers users a platform that is not only visually appealing but also highly functional. The combination of these technologies ensures a responsive and secure website that delivers a smooth and enjoyable user experience. Riparia represents the culmination of my expertise in web development, and I am excited to share it with the world.
+    </p>
+    <h2 id="social-media-title">Follow Us on Social Media</h2>
+    <div class="social-media-icons">
+        <i class="fab fa-facebook icon" href="https://twitter.com/Ripariav"></i>
+        <i class="fab fa-twitter icon" href="https://twitter.com/Ripariav"></i>
+        <i class="fab fa-instagram icon"  href="https://twitter.com/Ripariav"></i>
+        <i class="fab fa-linkedin icon"  href="https://twitter.com/Ripariav"></i>
+    </div>
+    </div>
+</div>
+
+{% endblock %}

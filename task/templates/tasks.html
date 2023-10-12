@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" href="../static/css/task.css">
+{% endblock %}
+
+{% block content %}
+
+<h1 class="task-title">Tasks</h1>
+<a href='/task/create'><button class="create-task-btn">Create Task</button></a>
+
+<ul class="task-list-container">
+    {% for task in tasks %}
+    {% if task.finishdate == NULL %}
+    <li class='task-tag'>
+        <a href="{% url 'task_details' task.id %}" class="link_task">
+            {% if task.important == True %}
+            <h3>{{task.title}} - Important</h3>
+            {% else %}
+            <p>{{task.title}}</p>
+            {% endif %}
+            <p>{{task.description}}</p>
+            <p>{{task.important}}</p>
+            {% if task.finishdate == NULL %}
+            <form action="{% url 'task_completed' task.id %}" method="post" class="complete_task">
+                {% csrf_token %}
+                <button class="button">
+                    Complete
+                </button>
+            </form>
+            {% else %}
+            <form action="{% url 'undo_complete_task' task.id %}" method="post" class="complete_task">
+                {% csrf_token %}
+                <button class="button">
+                    UnComplete
+                </button>
+            </form>
+            {% endif %}
+        </a>
+    </li>
+    {% endif %}
+    {% endfor %}
+</ul>
+<img src="{% static '../static/img/divisor.svg' %}" alt="logo-task" class="divisor">
+
+<h1 class="task-title-completed">Completed - Tasks</h1>
+<ul class="task-list-container">
+    {% for task in tasks %}
+    {% if task.finishdate != NULL %}
+    <li class='task-tag'>
+        <a href="{% url 'task_details' task.id %}" class="link_task">
+            {% if task.important == True %}
+            <h3>{{task.title}} - Important</h3>
+            {% else %}
+            <p>{{task.title}}</p>
+            {% endif %}
+            <p>{{task.description}}</p>
+            <p>{{task.important}}</p>
+            {% if task.finishdate == NULL %}
+            <form action="{% url 'task_completed' task.id %}" method="post" class="complete_task">
+                {% csrf_token %}
+                <button class="button">
+                    Complete
+                </button>
+            </form>
+            {% else %}
+            <form action="{% url 'undo_complete_task' task.id %}" method="post" class="complete_task">
+                {% csrf_token %}
+                <button class="button">
+                    UnComplete
+                </button>
+            </form>
+            {% endif %}
+        </a>
+    </li>
+    {% endif %}
+    {% endfor %}
+</ul>
+
+
+
+
+
+{% endblock %}

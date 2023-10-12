@@ -1,0 +1,49 @@
+:root{
+    --main-bg-color: #b0b0b0;
+    --main-dec-color: #abd91a; 
+}
+
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    background-color: var(--main-bg-color);
+    color: black;
+    font-family: 'Courier New', Courier, monospace;
+}
+.container{
+    display: flex;
+    flex-flow: column wrap;
+    margin: 20px;
+}
+/* Estilos para el Navbar */
+.navbar {
+    background-color: #333;
+    overflow: hidden;
+}
+
+.navbar>a {
+    float: left;
+    display: flex;
+    color: white;
+    text-align: center;
+    justify-content: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    max-height: 18px;
+    min-width: 40px;
+}
+
+.navbar>a:hover {
+    background-color: #b0b0b0;
+    color: black;
+}
+
+.navbar-logo{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 32px;
+    overflow: hidden;
+}
